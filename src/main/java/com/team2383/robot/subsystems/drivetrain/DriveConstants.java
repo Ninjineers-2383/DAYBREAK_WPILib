@@ -26,7 +26,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
 
 public final class DriveConstants {
-    public static final double kMaxSpeed = 5.0; // meters per second
+    public static final double kMaxSpeed = 4.5; // meters per second
 
     public final static double kTrackWidthMeters = Constants.getRobot() == RobotType.ROBOT_COMP
             ? Units.inchesToMeters(27)
@@ -178,14 +178,14 @@ public final class DriveConstants {
             0.11395,
             0.014899,
             0.097969, 0, 0,
-            20, 22,
+            41, 31,
             new AbsoluteCancoder(21, "Drive", cancoderConfig),
             "frontLeft",
             new Translation2d(
                     DriveConstants.kWheelBaseMeters / 2,
                     DriveConstants.kTrackWidthMeters / 2),
             Rotation2d.fromRotations(
-                    0.523193),
+                    0.192139 + 0.5),
             false, false);
 
     public final static ModuleConstants frontRightConstants = new ModuleConstants(
@@ -193,13 +193,13 @@ public final class DriveConstants {
             0.12042,
             0.02342,
             0.1069, 0, 0,
-            23, 25,
-            new AbsoluteCancoder(24, "Drive", cancoderConfig),
+            42, 32,
+            new AbsoluteCancoder(22, "Drive", cancoderConfig),
             "frontRight",
             new Translation2d(
                     DriveConstants.kWheelBaseMeters / 2,
                     -DriveConstants.kTrackWidthMeters / 2),
-            Rotation2d.fromRotations(0.118408),
+            Rotation2d.fromRotations(0.834717 - 0.5),
             false, false);
 
     public final static ModuleConstants rearLeftConstants = new ModuleConstants(
@@ -207,13 +207,13 @@ public final class DriveConstants {
             0.12168,
             0.022463,
             0.10438, 0, 0,
-            26, 28,
-            new AbsoluteCancoder(27, "Drive", cancoderConfig),
+            43, 33,
+            new AbsoluteCancoder(23, "Drive", cancoderConfig),
             "rearLeft",
             new Translation2d(
                     -DriveConstants.kWheelBaseMeters / 2,
                     DriveConstants.kTrackWidthMeters / 2),
-            Rotation2d.fromRotations(0.878418),
+            Rotation2d.fromRotations(0.322266 + 0.5),
             false, true);
 
     public final static ModuleConstants rearRightConstants = new ModuleConstants(
@@ -221,13 +221,13 @@ public final class DriveConstants {
             0.12217,
             0.015315,
             0.0070936, 0, 0,
-            29, 31,
-            new AbsoluteCancoder(30, "Drive", cancoderConfig),
+            44, 34,
+            new AbsoluteCancoder(24, "Drive", cancoderConfig),
             "rearRight",
             new Translation2d(
                     -DriveConstants.kWheelBaseMeters / 2,
                     -DriveConstants.kTrackWidthMeters / 2),
-            Rotation2d.fromRotations(0.600830),
+            Rotation2d.fromRotations(0.943604 - 0.5),
             true, false);
 
 }

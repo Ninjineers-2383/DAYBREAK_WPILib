@@ -3,7 +3,6 @@ package com.team2383.robot.commands.feeding;
 import com.team2383.robot.commands.subsystem.feeder.FeederPowerCommand;
 import com.team2383.robot.commands.subsystem.indexer.IndexerCommand;
 import com.team2383.robot.commands.subsystem.pivot.PivotPositionCommand;
-import com.team2383.robot.commands.subsystem.shooter.ShooterRPMCommand;
 import com.team2383.robot.subsystems.feeder.FeederSubsystem;
 import com.team2383.robot.subsystems.indexer.IndexerSubsystem;
 import com.team2383.robot.subsystems.pivot.PivotSubsystem;
@@ -19,7 +18,6 @@ public class FullFeedCommand extends ParallelCommandGroup {
         addCommands(
                 new FeederPowerCommand(feeder, () -> -0.8),
                 new IndexerCommand(indexer, () -> -0.5),
-                new ShooterRPMCommand(shooter, () -> 0, () -> -1000, () -> 0),
                 new PivotPositionCommand(pivot, angle));
     }
 }

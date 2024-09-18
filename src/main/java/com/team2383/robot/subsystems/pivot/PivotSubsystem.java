@@ -80,28 +80,13 @@ public class PivotSubsystem extends SubsystemBase {
         io.updateInputs(inputs);
         Logger.processInputs("Pivot", inputs);
 
-        if (Math.abs(inputs.absoluteEncoderPositionRot - setpoint.position) > (10 / 360.0)
-                && lashState == LashState.Reverse && DriverStation.isEnabled()) {
-            lashState = LashState.Forward;
-            setpoint = new TrapezoidProfile.State(inputs.absoluteEncoderPositionRot, 0.0);
-        }
-
-        if (lashState == LashState.Forward) {
-            setpoint = profile.calculate(0.02, setpoint, forwardGoal);
-            if (setpoint.equals(forwardGoal)) {
-                lashState = LashState.Reverse;
-                setpoint = new TrapezoidProfile.State(inputs.absoluteEncoderPositionRot, 0);
-            }
-        }
-        if (lashState == LashState.Reverse) {
-            setpoint = profile.calculate(0.02, setpoint,
-                    new TrapezoidProfile.State(
-                            MathUtil.clamp(
-                                    goal.position,
-                                    Units.degreesToRotations(kMinAngleDegrees.get()),
-                                    Units.degreesToRotations(kMaxAngleDegrees.get())),
-                            0.0));
-        }
+        setpoint = profile.calculate(0.02, setpoint,
+                new TrapezoidProfile.State(
+                        MathUtil.clamp(
+                                goal.position,
+                                Units.degreesToRotations(kMinAngleDegrees.get()),
+                                Units.degreesToRotations(kMaxAngleDegrees.get())),
+                        0.0));
 
         io.setAngleRot(setpoint.position, setpoint.velocity, lashState);
 
@@ -131,30 +116,12 @@ public class PivotSubsystem extends SubsystemBase {
 
     public void incrementPosition(double deltaAngle) {
         goal.position += deltaAngle;
-        lashState = LashState.Forward;
-        forwardGoal = new TrapezoidProfile.State(
-                MathUtil.clamp(
-                        goal.position > inputs.absoluteEncoderPositionRot
-                                ? goal.position + (10.0 / 360.0)
-                                : goal.position,
-                        Units.degreesToRotations(kMinAngleDegrees.get()),
-                        Units.degreesToRotations(kMaxAngleDegrees.get())),
-                0.0);
     }
 
     public void setPosition(double angleRads) {
         if (Units.radiansToRotations(angleRads) == goal.position)
             return;
         goal = new TrapezoidProfile.State(Units.radiansToRotations(angleRads), 0);
-        lashState = LashState.Forward;
-        forwardGoal = new TrapezoidProfile.State(
-                MathUtil.clamp(
-                        goal.position > inputs.absoluteEncoderPositionRot
-                                ? goal.position + (kBacklash.get() / 360.0)
-                                : goal.position,
-                        Units.degreesToRotations(kMinAngleDegrees.get()),
-                        Units.degreesToRotations(kMaxAngleDegrees.get())),
-                0.0);
 
     }
 

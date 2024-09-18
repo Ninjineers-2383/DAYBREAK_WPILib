@@ -4,8 +4,8 @@ import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.Slot1Configs;
 
 public class ShooterConstants {
-    public static int kTopMotorID = 9;
-    public static int kBottomMotorID = 10;
+    public static int kTopMotorID = 1;
+    public static int kBottomMotorID = 2;
 
     public static Slot0Configs kBottomConfigs = new Slot0Configs()
             .withKP(0.25)
@@ -20,7 +20,7 @@ public class ShooterConstants {
             .withKI(0)
             .withKD(0)
             .withKA(0)
-            .withKV(0.175)
+            .withKV(0.15)
             .withKS(0.01);
 
     public static Slot0Configs kTopConfigs = new Slot0Configs()
@@ -36,7 +36,7 @@ public class ShooterConstants {
             .withKI(0)
             .withKD(0)
             .withKA(0)
-            .withKV(0.17)
+            .withKV(0.15)
             .withKS(0.01);
 
     public static int kSideMotorID = 11;

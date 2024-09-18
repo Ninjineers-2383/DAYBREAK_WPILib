@@ -14,12 +14,12 @@ public class IndexerBackOut extends Command {
 
     @Override
     public void initialize() {
-        indexer.setPower(0.5);
+        indexer.setPower(0.25);
     }
 
     @Override
     public boolean isFinished() {
-        return indexer.isBeamBreakTripped();
+        return !indexer.isBeamBreakTripped();
     }
 
     @Override
