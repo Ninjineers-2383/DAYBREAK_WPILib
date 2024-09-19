@@ -386,7 +386,10 @@ public class RobotContainer {
         m_manualAmpLineup.whileTrue(
                 new ParallelCommandGroup(
                         new PivotPositionCommand(m_pivotSubsystem,
-                                PivotPresets.SCORE_AMP)));
+                                PivotPresets.SCORE_AMP),
+                        new SequentialCommandGroup(
+                                new IndexerCommand(m_indexerSubsystem, () -> -0.5).withTimeout(0.2),
+                                new IndexerCommand(m_indexerSubsystem, () -> 0).withTimeout(0.01))));
 
         m_manualAmpShoot.whileTrue(
                 new IndexerCommand(m_indexerSubsystem, () -> 0.5));
