@@ -392,7 +392,8 @@ public class RobotContainer {
                                 new IndexerCommand(m_indexerSubsystem, () -> 0).withTimeout(0.01))));
 
         m_manualAmpShoot.whileTrue(
-                new IndexerCommand(m_indexerSubsystem, () -> 0.5));
+                new IndexerCommand(m_indexerSubsystem, () -> 0.5).alongWith(
+                        new ShooterRPMCommand(m_shooterSubsystem, () -> 400, () -> 0, () -> 0, false)));
 
         m_manualAmpShoot.onFalse(new PivotPositionCommand(m_pivotSubsystem, PivotPresets.ZERO));
 
