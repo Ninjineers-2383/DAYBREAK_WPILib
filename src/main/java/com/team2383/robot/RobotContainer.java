@@ -443,18 +443,8 @@ public class RobotContainer {
         // .getRadians()) > -(Math.PI / 2.0));
         m_subwoofer.onTrue(
                 new SequentialCommandGroup(
-                        new ConditionalCommand(
-                                new PivotPositionCommand(m_pivotSubsystem,
-                                        PivotPresets.SUBWOOFER),
-                                new PivotPositionCommand(m_pivotSubsystem,
-                                        PivotPresets.SUBWOOFER_BACK),
-                                () -> MathUtil
-                                        .angleModulus(m_drivetrainSubsystem.getHeading().getRadians()) < (Math.PI / 2.0)
-                                        &&
-                                        MathUtil.angleModulus(m_drivetrainSubsystem
-                                                .getHeading()
-                                                .getRadians()) > -(Math.PI
-                                                        / 2.0)),
+                        new PivotPositionCommand(m_pivotSubsystem,
+                                PivotPresets.SUBWOOFER),
                         // new PivotPositionCommand(m_pivotSubsystem, PivotPresets.SUBWOOFER_BACK),
                         new ParallelDeadlineGroup(
                                 new SequentialCommandGroup(
@@ -466,16 +456,10 @@ public class RobotContainer {
                         new ShooterRPMCommand(m_shooterSubsystem, () -> 0, () -> 0, () -> 0).withTimeout(0.02),
                         new PivotPositionCommand(m_pivotSubsystem, PivotPresets.ZERO)));
 
-        m_subwooferPivot.onTrue(new ConditionalCommand(
+        m_subwooferPivot.onTrue(
                 new PivotPositionCommand(m_pivotSubsystem,
-                        PivotPresets.SUBWOOFER),
-                new PivotPositionCommand(m_pivotSubsystem,
-                        PivotPresets.SUBWOOFER_BACK),
-                () -> MathUtil.angleModulus(m_drivetrainSubsystem.getHeading().getRadians()) < (Math.PI / 2.0) &&
-                        MathUtil.angleModulus(m_drivetrainSubsystem
-                                .getHeading()
-                                .getRadians()) > -(Math.PI / 2.0)).alongWith(
-                                        new ShooterRPMCommand(m_shooterSubsystem, () -> -4000, () -> 2000, () -> 150)));
+                        PivotPresets.SUBWOOFER).alongWith(
+                                new ShooterRPMCommand(m_shooterSubsystem, () -> -4000, () -> 2000, () -> 150)));
 
         m_farPivot.onTrue(new PivotPositionCommand(m_pivotSubsystem,
                 PivotPresets.FAR).alongWith(
