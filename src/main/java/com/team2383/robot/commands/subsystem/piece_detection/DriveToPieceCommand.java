@@ -48,9 +48,9 @@ public class DriveToPieceCommand extends Command {
             drivetrainSubsystem.drive(
                     new ChassisSpeeds(
                             m_driveRateLimiter.calculate(
-                                    -4 * getRobotSpeedMultiplier(pieceDetectionSubsystem.inputs.frontPitch)),
+                                    -2 * getRobotSpeedMultiplier(pieceDetectionSubsystem.inputs.frontPitch)),
                             0, 0),
-                    false, true, new Translation2d(-Units.inchesToMeters(27 / 2.0), 0));
+                    false, true, new Translation2d(0, 0));
         }
     }
 

@@ -24,6 +24,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "AutoFeed"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "DriveFrom1Center"

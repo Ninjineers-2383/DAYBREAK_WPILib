@@ -55,6 +55,8 @@ public class PivotIOSparkMaxSRXMag implements PivotIO {
 
         inputs.appliedVolts = new double[] { motorLeader.get() * 12.0 };
 
+        inputs.absoluteEncoderPositionRot = inputs.rotorPositionRot;
+
         motorLeader.getPIDController().setReference(desiredRot + offset, CANSparkBase.ControlType.kPosition, 0,
                 (desiredVel * kV) + kS + Math.sin(currentPositionRad) * kG);
     }

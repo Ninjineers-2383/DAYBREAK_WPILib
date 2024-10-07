@@ -12,7 +12,7 @@ public class PivotPresets {
     public static double SCORE_TRAP = Math.toRadians(-23);
 
     public static double SUBWOOFER = Math.toRadians(45);
-    public static double SUBWOOFER_BACK = Math.toRadians(43);
+    public static double SUBWOOFER_BACK = Math.toRadians(45);
     public static double FAR = Math.toRadians(32);
     // public static double SUBWOOFER = Math.toRadians(15);
     // public static double SUBWOOFER_BACK = Math.toRadians(15);

@@ -24,14 +24,14 @@ public class SimComponents extends SubsystemBase {
     }
 
     Pose3d[] getComponents(double pivotAngleRad) {
-        Pose3d[] pose = new Pose3d[1];
+        Pose3d[] pose = new Pose3d[2];
 
-        Pose3d robotPose = new Pose3d(new Translation3d(0.0, 0.0, 0.055), new Rotation3d());
+        Pose3d robotPose = new Pose3d(new Translation3d(0.0, 0.0, 0.0), new Rotation3d());
         Rotation3d pivotRotation = new Rotation3d(0, -pivot.getAngle().getRadians(), 0);
 
-        Transform3d pivotPose = new Transform3d(new Translation3d(0, 0, 0.471488), pivotRotation);
-
-        pose[0] = robotPose.transformBy(pivotPose);
+        Transform3d pivotPose = new Transform3d(new Translation3d(0, 0, 0.5679186), pivotRotation);
+        pose[0] = robotPose;
+        pose[1] = robotPose.transformBy(pivotPose);
 
         return pose;
     }
