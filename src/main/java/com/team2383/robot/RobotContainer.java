@@ -39,7 +39,6 @@ import com.team2383.robot.subsystems.feeder.*;
 import com.team2383.robot.subsystems.gamePieceSim.GamePieceSim;
 import com.team2383.robot.subsystems.indexer.*;
 import com.team2383.robot.subsystems.piece_detection.PieceDetectionIO;
-import com.team2383.robot.subsystems.piece_detection.PieceDetectionIOPhoton;
 import com.team2383.robot.subsystems.piece_detection.PieceDetectionSubsystem;
 import com.team2383.robot.subsystems.pivot.*;
 import com.team2383.robot.subsystems.resting_hooks.RestingHookIO;
