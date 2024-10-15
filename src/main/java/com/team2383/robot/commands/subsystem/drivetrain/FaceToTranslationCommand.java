@@ -56,6 +56,8 @@ public class FaceToTranslationCommand extends Command {
             angle = angle.minus(new Rotation2d(Math.PI));
         }
 
+        Logger.recordOutput("Swerve/SeekingRotation", angle.getRadians());
+
         // System.out.println(heading.getDegrees() + "-" + angle.getDegrees() + "=" +
         // heading.minus(angle).getDegrees());
         // System.out.println("Angle: " + angle.getDegrees());

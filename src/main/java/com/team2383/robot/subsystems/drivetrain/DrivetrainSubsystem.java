@@ -318,6 +318,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         Logger.recordOutput("Swerve/hasCrossedCenterLine", hasCrossedCenterLine());
 
         Logger.recordOutput("Swerve/headingControllerEnabled", headingControllerEnabled);
+        Logger.recordOutput("Swerve/manualHeadingControl", useManualHeadingTarget);
 
         LoggedTunableNumber.ifChanged(hashCode(),
                 (pid) -> {

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7718481866382481,
+        "x": 0.77,
         "y": 6.621971013811542
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.178914050135794,
-        "y": 5.653758230593384
+        "x": 1.0385835970781097,
+        "y": 7.585227392653948
       },
       "isLocked": false,
       "linkedName": "AmpSubwoofer"
     },
     {
       "anchor": {
-        "x": 6.711279576405308,
-        "y": 7.3114046228092455
+        "x": 7.569106668462447,
+        "y": 7.410764619868505
       },
       "prevControl": {
-        "x": 5.981125808405464,
-        "y": 6.896993024755279
+        "x": 6.838952900462603,
+        "y": 6.996353021814539
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,16 +30,28 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.2,
+      "waypointRelativePos": 0.55,
       "rotationDegrees": 180.0,
       "rotateFast": false
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "New Constraints Zone",
+      "minWaypointRelativePos": 0,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 2.5,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 540.0
+      }
+    }
+  ],
   "eventMarkers": [
     {
       "name": "PivotSeek",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.6,
       "command": {
         "type": "parallel",
         "data": {

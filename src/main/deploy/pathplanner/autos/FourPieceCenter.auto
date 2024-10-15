@@ -14,12 +14,6 @@
         {
           "type": "named",
           "data": {
-            "name": "InitializeHeading"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "ShootSubwoofer"
           }
         },
@@ -30,9 +24,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "DriveFrom1Center"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "DriveFrom1Center"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "SpinupFlywheels"
+                }
+              }
+            ]
           }
         },
         {
@@ -48,9 +55,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "DriveFrom2Center"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "DriveFrom2Center"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "SpinupFlywheels"
+                }
+              }
+            ]
           }
         },
         {
@@ -66,9 +86,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "DriveFrom3Center"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "DriveFrom3Center"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "SpinupFlywheels"
+                }
+              }
+            ]
           }
         },
         {

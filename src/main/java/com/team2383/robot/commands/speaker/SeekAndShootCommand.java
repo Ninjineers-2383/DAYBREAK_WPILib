@@ -37,13 +37,7 @@ public class SeekAndShootCommand extends ParallelDeadlineGroup {
                         new ShootCommand(indexer, shooter)),
                 new FaceToSpeakerCommand(drivetrain, finish),
                 new PivotSeekCommand(pivot, drivetrain::getEstimatorPose3d, finish),
-                new ShooterRPMCommand(shooter, () -> -4000, () -> 2000, () -> 0),
-                new RunCommand(() -> drivetrain
-                        .forceHeading(DriverStation.getAlliance().get() == DriverStation.Alliance.Blue
-                                ? drivetrain.getPose().getRotation()
-                                : drivetrain.getPose().getRotation()
-                                        .plus(new Rotation2d(Math.PI))),
-                        new Subsystem[0]));
+                new ShooterRPMCommand(shooter, () -> -4000, () -> 2000, () -> 500));
     }
 
 }
