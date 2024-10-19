@@ -40,7 +40,7 @@ public class PivotSeekCommand extends Command {
         // https://www.desmos.com/calculator/et7ibvp93g
         // 1.58175
         double angle = Math.atan2(1.7, distanceToSpeaker) + (0.001 * distanceToSpeaker * distanceToSpeaker)
-                - Units.degreesToRadians(10);
+                - Units.degreesToRadians(7);
 
         if (drivePose2d.getRotation().minus(angleToSpeaker).getDegrees() > 90) {
             angle = Math.PI - angle - 0.083;
