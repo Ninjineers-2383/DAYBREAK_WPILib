@@ -658,4 +658,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
             return getPose().getTranslation().getY() > (FieldConstants.fieldWidth / 2);
         }
     }
+
+    public double latestVisionTime() {
+        return m_SLAMClient.latestTime;
+    }
 }

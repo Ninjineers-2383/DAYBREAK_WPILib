@@ -17,6 +17,9 @@ import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.RobotController;
+import edu.wpi.first.wpilibj.Timer;
 
 public class SLAMClient {
     private final SwerveDrivePoseEstimator estimator;
@@ -33,6 +36,8 @@ public class SLAMClient {
     private double varianceStatic;
 
     private final Supplier<Pose3d> poseSupplier;
+
+    public double latestTime = -1;
 
     public SLAMClient(SwerveDrivePoseEstimator estimator, Pose3d[] landmarks, Supplier<Pose3d> poseSupplier) {
         this.estimator = estimator;
@@ -105,7 +110,7 @@ public class SLAMClient {
                     .plus(measurement.pose().inverse())
                     .toPose2d();
             estimator.addVisionMeasurement(pose, measurement.timestamp());
-
+            latestTime = Timer.getFPGATimestamp();
         }
     }
 
