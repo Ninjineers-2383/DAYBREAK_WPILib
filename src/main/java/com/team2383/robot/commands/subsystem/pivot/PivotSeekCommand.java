@@ -33,20 +33,21 @@ public class PivotSeekCommand extends Command {
 
         Pose2d drivePose2d = poseSupplier.get().toPose2d();
 
-        Rotation2d angleToSpeaker = new Rotation2d(
-                Math.atan2(FieldConstants.getSpeakerLocation().getY() - drivePose2d.getY(),
-                        FieldConstants.getSpeakerLocation().getX() - drivePose2d.getX()));
+        // Rotation2d angleToSpeaker = new Rotation2d(
+        // Math.atan2(FieldConstants.getSpeakerLocation().getY() - drivePose2d.getY(),
+        // FieldConstants.getSpeakerLocation().getX() - drivePose2d.getX()));
 
         // https://www.desmos.com/calculator/et7ibvp93g
         // 1.58175
         double angle = Math.atan2(1.7, distanceToSpeaker) + (0.001 * distanceToSpeaker * distanceToSpeaker)
                 - Units.degreesToRadians(7);
 
-        if (drivePose2d.getRotation().minus(angleToSpeaker).getDegrees() > 90) {
-            angle = Math.PI - angle - 0.083;
-        } else if (drivePose2d.getRotation().minus(angleToSpeaker).getDegrees() < -90) {
-            angle = Math.PI - angle - 0.083;
-        }
+        // if (drivePose2d.getRotation().minus(angleToSpeaker).getDegrees() > 90) {
+        // angle = Math.PI - angle - 0.083;
+        // } else if (drivePose2d.getRotation().minus(angleToSpeaker).getDegrees() <
+        // -90) {
+        // angle = Math.PI - angle - 0.083;
+        // }
 
         Logger.recordOutput("Pivot/DistanceToSpeaker", distanceToSpeaker);
 
