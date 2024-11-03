@@ -50,11 +50,11 @@ public class FaceToTranslationCommand extends Command {
             angle = angle.plus(new Rotation2d(Math.PI));
         }
 
-        if (heading.minus(angle).getDegrees() > 90) {
-            angle = angle.plus(new Rotation2d(Math.PI));
-        } else if (heading.minus(angle).getDegrees() < -90) {
-            angle = angle.minus(new Rotation2d(Math.PI));
-        }
+        // if (heading.minus(angle).getDegrees() > 90) {
+        // angle = angle.plus(new Rotation2d(Math.PI));
+        // } else if (heading.minus(angle).getDegrees() < -90) {
+        // angle = angle.minus(new Rotation2d(Math.PI));
+        // }
 
         Logger.recordOutput("Swerve/SeekingRotation", angle.getRadians());
 

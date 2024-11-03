@@ -363,9 +363,10 @@ public class RobotContainer {
         m_fullFeedRear.and(m_autoFeed).whileTrue(
                 new DriveToPieceCommand(m_pieceDetectionSubsystem, m_drivetrainSubsystem, m_backFeederSubsystem));
 
-        m_fullFeedRear.onFalse(new IndexerBackOut(m_indexerSubsystem).withTimeout(0.4)
-                .deadlineWith(new ShooterRPMCommand(m_shooterSubsystem, () -> 400, () -> 0, () -> 0, true)
-                        .andThen(new PivotPositionCommand(m_pivotSubsystem, PivotPresets.ZERO))));
+        m_fullFeedRear.onFalse(new InstantCommand(() -> m_driverController.setRumble(RumbleType.kBothRumble, 0))
+                .andThen(new IndexerBackOut(m_indexerSubsystem).withTimeout(0.4)
+                        .deadlineWith(new ShooterRPMCommand(m_shooterSubsystem, () -> 400, () -> 0, () -> 0, true)
+                                .andThen(new PivotPositionCommand(m_pivotSubsystem, PivotPresets.ZERO)))));
 
         m_partialFeedRear.whileTrue(new PartialFeedCommand(m_backFeederSubsystem));
 
@@ -696,9 +697,8 @@ public class RobotContainer {
         NamedCommands.registerCommand("FullFeed",
                 new FullFeedCommand(m_shooterSubsystem, m_indexerSubsystem,
                         m_pivotSubsystem, m_backFeederSubsystem, PivotPresets.FEED_BACK)
-                                .until(m_indexerBeamBreak).andThen(new IndexerBackOut(m_indexerSubsystem)
-                                        .alongWith(new PivotPositionCommand(m_pivotSubsystem,
-                                                PivotPresets.SUBWOOFER_BACK))));
+                                .until(m_indexerBeamBreak).andThen(new IndexerBackOut(m_indexerSubsystem)));
+        NamedCommands.registerCommand("IndexerBackOut", new IndexerBackOut(m_indexerSubsystem).withTimeout(1));
         NamedCommands.registerCommand("AutoFeed",
                 new SequentialCommandGroup(
                         new ParallelDeadlineGroup(

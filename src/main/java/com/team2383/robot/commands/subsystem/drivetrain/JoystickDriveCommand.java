@@ -40,7 +40,7 @@ public class JoystickDriveCommand extends Command {
         move.vyMetersPerSecond = m_yRateLimiter.calculate(-ThrottleSoftener.soften(move.vyMetersPerSecond)
                 * DriveConstants.kMaxSpeed);
         move.omegaRadiansPerSecond = m_oRateLimiter
-                .calculate(-ThrottleSoftener.soften(move.omegaRadiansPerSecond) * 0.75);
+                .calculate(-ThrottleSoftener.soften(move.omegaRadiansPerSecond) * 0.68);
 
         m_drivetrain.drive(
                 move,

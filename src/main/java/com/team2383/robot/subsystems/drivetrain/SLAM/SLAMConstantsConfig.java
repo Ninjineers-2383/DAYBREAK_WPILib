@@ -6,7 +6,7 @@ import edu.wpi.first.math.geometry.Translation3d;
 
 public final class SLAMConstantsConfig {
     // Description of the camera's relative position
-    private static final Rotation3d CAM_ROTATION_FL = new Rotation3d(0, Math.toRadians(-20), Math.toRadians(-20));
+    private static final Rotation3d CAM_ROTATION_FL = new Rotation3d(0, Math.toRadians(-10), Math.toRadians(-20));
     private static final Rotation3d CAM_ROTATION_FR = new Rotation3d(0, Math.toRadians(-40), Math.toRadians(-0));
     private static final Rotation3d CAM_ROTATION_BL = new Rotation3d(0, Math.toRadians(-40), Math.toRadians(-180));
     private static final Rotation3d CAM_ROTATION_BR = new Rotation3d(0, Math.toRadians(-20), Math.toRadians(-200));
@@ -15,8 +15,8 @@ public final class SLAMConstantsConfig {
     public static final double POSE_VARIANCE_STATIC = 0.1;
 
     private static final Translation3d CAM_FRONT_LEFT = new Translation3d(
-            0.267,
-            0.281,
+            0.274,
+            0.277,
             0.211);
 
     private static final Translation3d CAM_FRONT_RIGHT = new Translation3d(

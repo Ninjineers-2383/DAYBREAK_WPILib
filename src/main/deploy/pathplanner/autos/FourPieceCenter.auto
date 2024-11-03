@@ -24,6 +24,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "IndexerBackOut"
+          }
+        },
+        {
           "type": "deadline",
           "data": {
             "commands": [
@@ -55,6 +61,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "IndexerBackOut"
+          }
+        },
+        {
           "type": "deadline",
           "data": {
             "commands": [
@@ -83,6 +95,12 @@
           "type": "path",
           "data": {
             "pathName": "DriveTo3Center"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IndexerBackOut"
           }
         },
         {
