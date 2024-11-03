@@ -53,9 +53,11 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ConditionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
@@ -341,8 +343,15 @@ public class RobotContainer {
 
         m_seek.and(m_indexerBeamBreak.negate()).toggleOnTrue(
                 new SequentialCommandGroup(
+                        new ConditionalCommand(
+                                new InstantCommand(() -> m_driverController.setRumble(RumbleType.kBothRumble, 1)),
+                                new InstantCommand(),
+                                () -> (Timer.getFPGATimestamp() - m_drivetrainSubsystem.latestVisionTime()) > 3.0),
+                        new WaitUntilCommand(
+                                () -> (Timer.getFPGATimestamp() - m_drivetrainSubsystem.latestVisionTime()) < 3.0),
+                        new InstantCommand(() -> m_driverController.setRumble(RumbleType.kBothRumble, 0)),
                         new SeekAndShootCommand(m_drivetrainSubsystem, m_pivotSubsystem,
-                                m_shooterSubsystem, m_indexerSubsystem, false),
+                                m_shooterSubsystem, m_indexerSubsystem, false, m_seek),
                         new PivotZeroCommand(m_pivotSubsystem)));
 
         m_pivotZero.onTrue(new PivotZeroCommand(m_pivotSubsystem));
@@ -635,7 +644,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("SeekAndShoot",
                 new SequentialCommandGroup(
                         new SeekAndShootCommand(m_drivetrainSubsystem, m_pivotSubsystem, m_shooterSubsystem,
-                                m_indexerSubsystem, true),
+                                m_indexerSubsystem, true, new Trigger(() -> false)),
                         new PivotPositionCommand(m_pivotSubsystem, PivotPresets.ZERO)));
 
         NamedCommands.registerCommand("DriveToPiece",

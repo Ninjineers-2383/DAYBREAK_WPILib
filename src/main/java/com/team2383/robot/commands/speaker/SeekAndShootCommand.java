@@ -17,11 +17,12 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class SeekAndShootCommand extends ParallelDeadlineGroup {
 
     public SeekAndShootCommand(DrivetrainSubsystem drivetrain, PivotSubsystem pivot, ShooterSubsystem shooter,
-            IndexerSubsystem indexer, boolean finish) {
+            IndexerSubsystem indexer, boolean finish, Trigger interrupt) {
 
         super(
                 new SequentialCommandGroup(
@@ -32,7 +33,7 @@ public class SeekAndShootCommand extends ParallelDeadlineGroup {
                                     && Math.abs(speeds.vxMetersPerSecond) < 0.001
                                     && Math.abs(speeds.vyMetersPerSecond) < 0.001;
                             return pivot.isFinished() && isStopped && drivetrain.headingIsFinished()
-                                    && shooter.isFinished();
+                                    && shooter.isFinished() && !interrupt.getAsBoolean();
                         }),
                         new ShootCommand(indexer, shooter)),
                 new FaceToSpeakerCommand(drivetrain, finish),
